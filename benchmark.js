@@ -6,11 +6,11 @@ const thunk = require('thunks').thunk
 
 // BENCHMARK SIZE
 let i = 3000;
-function measureTimeForSizes() {
+function measureTimeForSizes(proto_types) {
     for(var key in dataChunks) {
-        console.log(key);
-        http2.measureTime(dataChunks[key], i++);
-    }
+        // console.log(key);
+        proto_types.measureTime(dataChunks[key], i++);
+    }   
 }
 
 // BENCHMARK NUMBER
@@ -18,4 +18,7 @@ function measureTimeForSizes() {
 
 
 // Call scripts
-measureTimeForSizes();
+// measureTimeForSizes(quic);
+// thunk.delay(100000);
+measureTimeForSizes(http2);
+// measureTimeForSizes();

@@ -72,6 +72,8 @@ function measureTime(data, port=2000, tls=false) {
           timings: utils.getTimings(eventTimes),
         //   body: responseBody
         });
+        client.close();
+        server.close();
     });
     
 

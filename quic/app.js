@@ -1,6 +1,7 @@
 'use strict'
 
 require('ts-node/register')
+const utils = require('../utils.js')
 const fs = require('fs');
 const ilog = require('ilog')
 const thunk = require('thunks').thunk
@@ -10,12 +11,19 @@ const {
 } = require('../src')
 
 
-
-
 // ---------- Server ----------
 function measureTime(data_txt, port, tls=false){
-    var startTime, endTime;
-    var timeDiff=0;
+    const eventTimes = {
+        startAt: process.hrtime(),
+        dnsLookupAt: undefined,
+        tcpConnectionAt: undefined,
+        tlsHandshakeAt: undefined,
+        firstByteAt: undefined,
+        endAt: undefined
+    }
+
+    // var startTime, endTime;
+    // var timeDiff=0;
     const server = new Server()
     server
     .on('error', (err) => ilog.error(Object.assign(err, { class: 'server error' })))
@@ -65,21 +73,38 @@ function measureTime(data_txt, port, tls=false){
         .on('data', (data) => {
         // ilog.info(`client stream ${stream.id} data: ${data.toString()}`)
         })
+
+        .on('response', (responseHeaders) => {
+
+        })
+    
+        .once('readable', () => {
+            eventTimes.firstByteAt = process.hrtime();
+        })
+
         .on('end', () => {
+            eventTimes.endAt = process.hrtime()
+
         // ilog.info(`client stream ${stream.id} ended`)
+        console.log({
+            headers: stream.headers,
+            timings: utils.getTimings(eventTimes),
+          //   body: responseBody
+          });
         cli.close()
         })
         .on('finish', () => {
         // ilog.info(`client stream ${stream.id} finished`)
         })
 
-    yield (done) => stream.write('hello, QUIC', done)
+    // yield (done) => stream.write('hello, QUIC', done)
 
     let i = 0
     var txt = "abcd";
     while (i <= 0) {
         yield thunk.delay(10)
-        startTime = new Date();
+        // startTime = process.hrtime();//new Date();
+
         yield (done) => stream.write(data_txt, done)
         i++;
     }
@@ -87,16 +112,13 @@ function measureTime(data_txt, port, tls=false){
 
     yield (done) => cli.once('close', done)
     yield server.close()
-    endTime = new Date();
-    timeDiff = endTime - startTime;
-    ilog.info(`Time taken: ${timeDiff}`)
-    // console.log(timeDiff);
-    fs.appendFile("test.result", `${timeDiff}\n`, function(err) {
-        if(err) {
-            return console.log(err);
-        }
-        // console.log("The file was saved!");
-    }); 
+
+    // fs.appendFile("test.result", `${timeDiff}\n`, function(err) {
+    //     if(err) {
+    //         return console.log(err);
+    //     }
+    //     // console.log("The file was saved!");
+    // }); 
 
     })(ilog.error)
 }
