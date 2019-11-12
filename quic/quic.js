@@ -75,7 +75,7 @@ thunk(function * () {
   let i = 0
   while (i <= 99) {
     yield thunk.delay(100)
-    yield (done) => stream.write(`${i++}`, done)
+    yield (done) => stream.write(`${5000000}`, done)
   }
   stream.end()
 
