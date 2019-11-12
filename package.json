@@ -1,19 +1,52 @@
 {
-  "name": "cn-project",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "name": "quic",
+  "description": "A QUIC server/client implementation in Node.js.",
+  "authors": [
+    "Yan Qing <admin@zensh.com>"
+  ],
+  "version": "0.4.2",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/khushhallchandra/CN-project.git"
+    "url": "git@github.com:fidm/quic.git"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/khushhallchandra/CN-project/issues"
+  "homepage": "https://github.com/fidm/quic",
+  "engines": {
+    "node": ">= 8"
   },
-  "homepage": "https://github.com/khushhallchandra/CN-project#readme"
+  "keywords": [
+    "quic",
+    "udp"
+  ],
+  "dependencies": {
+    "@fidm/asn1": "^1.0.2",
+    "@fidm/x509": "^1.1.3",
+    "futoin-hkdf": "^1.0.1",
+    "long": "^4.0.0",
+    "tweetnacl": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/long": "^4.0.0",
+    "@types/node": "^10.3.3",
+    "ilog": "^1.2.3",
+    "thunks": "^4.9.2",
+    "tman": "^1.7.4",
+    "ts-node": "^6.2.0",
+    "tslint": "^5.10.0",
+    "tslint-eslint-rules": "^5.3.1",
+    "typescript": "^2.9.2"
+  },
+  "scripts": {
+    "test": "tman -r ts-node/register 'test/**/*.ts'",
+    "lint": "tslint -p tsconfig.json -t stylish 'src/**/*.ts' 'test/**/*.ts'",
+    "build": "rm -rf dist && tsc"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ]
 }
