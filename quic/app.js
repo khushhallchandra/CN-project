@@ -77,7 +77,7 @@ function measureTime(data_txt, tls=false){
         yield thunk.delay(100)
         startTime = new Date();
         yield (done) => stream.write(data_txt, done)
-        // i++;
+        i++;
     }
     stream.end()
 
@@ -85,3 +85,7 @@ function measureTime(data_txt, tls=false){
     yield server.close()
     })(ilog.error)
 }
+
+module.exports = {
+    measureTime
+};
