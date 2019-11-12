@@ -1,7 +1,13 @@
 'use strict'
+const dataChunks = require('./data');
+const quic = require('./quic/app.js');
 
 // BENCHMARK SIZE
-function measureSizes() {
+function measureTimeForSizes() {
+    for(var key in dataChunks) {
+        console.log(key);
+        quic.measureTime(dataChunks[key])
+    }
 
 }
 
@@ -10,4 +16,4 @@ function measureSizes() {
 
 
 // Call scripts
-measureSizes();
+measureTimeForSizes();
