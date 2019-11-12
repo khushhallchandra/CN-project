@@ -1,10 +1,4 @@
 'use strict'
-// **Github:** https://github.com/fidm/quic
-//
-// **License:** MIT
-
-// node example/echo.js
-// NODE_DEBUG=quic,quic:session,quic:stream node example/echo.js
 
 require('ts-node/register')
 const ilog = require('ilog')
@@ -42,7 +36,7 @@ server
       })
   })
 
-server.listen(2345)
+server.listen(3000)
   .then(() => {
     ilog.info(Object.assign({ class: 'server listen' }, server.address()))
   })
@@ -53,7 +47,7 @@ const cli = new Client()
 cli.on('error', (err) => ilog.error(Object.assign(err, { class: 'client error' })))
 
 thunk(function * () {
-  yield cli.connect(2345)
+  yield cli.connect(3000)
   yield cli.ping()
 
   const stream = cli.request()
@@ -73,9 +67,11 @@ thunk(function * () {
   yield (done) => stream.write('hello, QUIC', done)
 
   let i = 0
-  while (i <= 99) {
+  var txt = "abcd";
+  while (i <= 0) {
     yield thunk.delay(100)
-    yield (done) => stream.write(`${5000000}`, done)
+    yield (done) => stream.write(txt, done)
+    // i++;
   }
   stream.end()
 
