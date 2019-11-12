@@ -6,8 +6,8 @@ const ilog = require('ilog')
 // ---------- Server ----------
 // ----------------------------
 const options = {
-    key: fs.readFileSync(__dirname + '/server.key'),
-    cert: fs.readFileSync(__dirname + '/server.crt'),
+    key: fs.readFileSync(__dirname + '/../certs/server.key'),
+    cert: fs.readFileSync(__dirname + '/../certs/server.crt'),
   };
 
 const server = http2.createSecureServer(options);
