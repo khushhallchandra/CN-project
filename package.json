@@ -1,9 +1,6 @@
 {
-  "name": "quic",
-  "description": "A QUIC server/client implementation in Node.js.",
-  "authors": [
-    "Yan Qing <admin@zensh.com>"
-  ],
+  "name": "cn-project",
+  "description": "CN Project",
   "version": "0.4.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,12 +9,13 @@
     "type": "git",
     "url": "git@github.com:fidm/quic.git"
   },
-  "homepage": "https://github.com/fidm/quic",
   "engines": {
     "node": ">= 8"
   },
   "keywords": [
     "quic",
+    "http/2",
+    "http/1.1",
     "udp"
   ],
   "dependencies": {
