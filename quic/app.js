@@ -8,6 +8,8 @@ const {
   Client
 } = require('../src')
 
+var startTime, endTime;
+
 // ---------- Server ----------
 const server = new Server()
 server
@@ -25,6 +27,8 @@ server
           .on('data', (data) => {
             ilog.info(`server stream ${stream.id} data: ${data.toString()}`)
             stream.write(data)
+            endTime = new Date();
+            ilog.info(`Time taken: ${endTime - startTime}`)
           })
           .on('end', () => {
             ilog.info(`server stream ${stream.id} ended`)
@@ -70,6 +74,7 @@ thunk(function * () {
   var txt = "abcd";
   while (i <= 0) {
     yield thunk.delay(100)
+    startTime = new Date();
     yield (done) => stream.write(txt, done)
     // i++;
   }
