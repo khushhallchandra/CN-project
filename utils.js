@@ -1,3 +1,5 @@
+'use strict'
+const fs = require('fs');
 const NS_PER_SEC = 1e9
 const MS_PER_NS = 1e6
 
@@ -24,6 +26,13 @@ function getTimings(eventTimes) {
     }
 }
 
+function writeToFile(testName, protoName, key, timings) {
+    fs.appendFileSync(`results/${testName}/${protoName}_${key}.csv`, `${timings.contentTransfer}, ${timings.total}\n`, (err) => {
+        // console.log(err);
+    });
+}
+
 module.exports = {
     getTimings,
+    writeToFile,
 };

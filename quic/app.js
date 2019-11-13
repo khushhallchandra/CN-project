@@ -12,7 +12,7 @@ const {
 
 
 // ---------- Server ----------
-function measureTime(data_txt, port, tls=false){
+function measureTime(key, data_txt, port=2000, tls=false) {
     const eventTimes = {
         startAt: process.hrtime(),
         dnsLookupAt: undefined,
@@ -86,11 +86,8 @@ function measureTime(data_txt, port, tls=false){
             eventTimes.endAt = process.hrtime()
 
         // ilog.info(`client stream ${stream.id} ended`)
-        console.log({
-            headers: stream.headers,
-            timings: utils.getTimings(eventTimes),
-          //   body: responseBody
-          });
+        let timings = utils.getTimings(eventTimes);
+        utils.writeToFile("benchmark_size", "http2", key, timings);
         cli.close()
         })
         .on('finish', () => {

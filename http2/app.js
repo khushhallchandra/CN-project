@@ -1,10 +1,9 @@
 'use strict'
 const http2 = require('http2');
 const fs = require('fs');
-const ilog = require('ilog')
 const utils = require('../utils.js')
 
-function measureTime(data, port=2000, tls=false) {
+function measureTime(key, data, port=2000, tls=false) {
 
     // ----------------------------
     // ---------- Server ----------
@@ -67,11 +66,8 @@ function measureTime(data, port=2000, tls=false) {
     req.on('end', () => {
         eventTimes.endAt = process.hrtime()
   
-        console.log({
-          headers: req.headers,
-          timings: utils.getTimings(eventTimes),
-        //   body: responseBody
-        });
+        let timings = utils.getTimings(eventTimes);
+        utils.writeToFile("benchmark_size", "http2", key, timings);
         client.close();
         server.close();
     });

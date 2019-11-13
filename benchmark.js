@@ -5,11 +5,12 @@ const http2 = require('./http2/app.js');
 const thunk = require('thunks').thunk
 
 // BENCHMARK SIZE
-let i = 3000;
-function measureTimeForSizes(proto_types) {
+let i = 7000;
+function measureTimeForSizes(proto_type) {
     for(var key in dataChunks) {
-        // console.log(key);
-        proto_types.measureTime(dataChunks[key], i++);
+        for(var j=0; j<10; j++) {
+            proto_type.measureTime(key, dataChunks[key], i++);
+        }
     }   
 }
 
@@ -19,6 +20,7 @@ function measureTimeForSizes(proto_types) {
 
 // Call scripts
 // measureTimeForSizes(quic);
-// thunk.delay(100000);
 measureTimeForSizes(http2);
+// thunk.delay(100000);
+
 // measureTimeForSizes();
