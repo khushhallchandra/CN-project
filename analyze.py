@@ -69,7 +69,7 @@ if __name__ == '__main__':
 
     # ax.errorbar(x, time_contentTransfer_http2, yerr=std_contentTransfer_http2, fmt='-', color='r', label="HTTP2")
     # ax.errorbar(x, time_contentTransfer_quic, yerr=std_contentTransfer_quic, fmt='-', color='b', label="QUIC")
-    ax.set_xlabel('Size of data')
+    ax.set_xlabel('Size of data (Length)')
     ax.set_ylabel('Time (in ms)')
     ax.legend()
     ax.set_xscale('log')
@@ -88,7 +88,7 @@ if __name__ == '__main__':
     ax.fill_between(x, time_tot_quic - std_tot_quic, time_tot_quic + std_tot_quic, color='gray', alpha=0.3)
     # ax.errorbar(x, time_tot_http2, yerr=std_tot_http2, fmt='-', color='r', label="HTTP2")
     # ax.errorbar(x, time_tot_quic, yerr=std_tot_quic, fmt='-', color='b', label="QUIC")
-    ax.set_xlabel('Size of data')
+    ax.set_xlabel('Size of data (Length)')
     ax.set_ylabel('Time (in ms)')
     ax.legend()
     ax.set_xscale('log')
