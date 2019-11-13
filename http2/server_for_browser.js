@@ -15,7 +15,7 @@ const utils = require('../utils.js')
     const server = http2.createSecureServer(options);
     server.on('stream', (stream, requestHeaders) => {
         stream.respond({ ':status': 200, 'content-type': 'text/plain' });
-        stream.write("Hello World");
+        stream.write("Running on HTTP/2");
         stream.end();
     });
     server.listen(5000);
