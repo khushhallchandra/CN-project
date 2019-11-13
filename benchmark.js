@@ -9,7 +9,7 @@ const thunk = require('thunks').thunk
 let i = 7000;
 function measureTimeForSizes(proto_type) {
     for(var key in dataChunks) {
-        for(var j=0; j<10; j++) {
+        for(var j=0; j<50; j++) {
             proto_type.measureTime(key, dataChunks[key], i++);
         }
     }   
@@ -20,8 +20,8 @@ function measureTimeForSizes(proto_type) {
 
 
 // Call scripts
-// measureTimeForSizes(quic);
-measureTimeForSizes(http1);
+measureTimeForSizes(quic);
+// measureTimeForSizes(http1);
 // measureTimeForSizes(http2);
 // thunk.delay(100000);
 

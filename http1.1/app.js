@@ -23,13 +23,6 @@ function measureTime(key, data, port=2000, tls=false) {
         endAt: undefined
     }
 
-    let serverFunc = (req, res) => {
-        res.write(data);
-        res.end();
-    }
-
-    const server = tls ? https.createServer(options, serverFunc) : http.createServer(serverFunc);
-
     if(tls) {
         const server = https.createServer(options, (req, res) => {
             res.write(data);

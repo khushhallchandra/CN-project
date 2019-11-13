@@ -30,6 +30,7 @@ function measureTime(key, data, port=2000, tls=false) {
         stream.respond({ ':status': 200, 'content-type': 'text/plain' });
         stream.write(data);
         stream.end();
+        server.close();
     });
     server.listen(port);
 
@@ -69,20 +70,6 @@ function measureTime(key, data, port=2000, tls=false) {
         let timings = utils.getTimings(eventTimes);
         utils.writeToFile("benchmark_size", "http2", key, timings);
         client.close();
-        server.close();
-    });
-    
-
-    req.on('socket', (socket) => {
-        socket.on('lookup', () => {
-            eventTimes.dnsLookupAt = process.hrtime()
-        })
-        socket.on('connect', () => {
-            eventTimes.tcpConnectionAt = process.hrtime()
-        })
-        socket.on('secureConnect', () => {
-            eventTimes.tlsHandshakeAt = process.hrtime()
-        })
     });
 
     req.end();
