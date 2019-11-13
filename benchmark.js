@@ -19,8 +19,8 @@ function measureTimeForSizes(proto_type) {
 
 
 // Call scripts
-// measureTimeForSizes(quic);
-measureTimeForSizes(http2);
+measureTimeForSizes(quic);
+// measureTimeForSizes(http2);
 // thunk.delay(100000);
 
 // measureTimeForSizes();

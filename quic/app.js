@@ -87,7 +87,7 @@ function measureTime(key, data_txt, port=2000, tls=false) {
 
         // ilog.info(`client stream ${stream.id} ended`)
         let timings = utils.getTimings(eventTimes);
-        utils.writeToFile("benchmark_size", "http2", key, timings);
+        utils.writeToFile("benchmark_size", "quic", key, timings);
         cli.close()
         })
         .on('finish', () => {
