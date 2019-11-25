@@ -32,10 +32,10 @@ var string_objects = ["1","5","25","50","100","500"]
 function measureTimeForNumbers(proto_type) {
     let i = 7000;
     var data = dataChunks["txt3"]
-    let k = 0;
-        for(var j=0; j<50; j++) {
-            proto_type.measureTime("num_" + string_objects[k] + "_txt3", data, num_objects[k], i++);
-        }  
+    let k = 5;
+    for(var j=0; j<50; j++) {
+        proto_type.measureTime("num_" + string_objects[k] + "_txt3", data, num_objects[k], i++);
+    }
 }
 
 
