@@ -1,12 +1,9 @@
 'use strict'
-const http = require('http');
 const https = require('https');
 const fs = require('fs');
-const utils = require('../utils.js')
+const url = require('url')
+const mime = require('mime');
 
-    // ----------------------------
-    // ---------- Server ----------
-    // ----------------------------
     const options = {
         key: fs.readFileSync(__dirname + '/../certs/server.key'),
         cert: fs.readFileSync(__dirname + '/../certs/server.crt'),
@@ -14,8 +11,15 @@ const utils = require('../utils.js')
 
 
     const server = https.createServer(options, (req, res) => {
-        res.write("Running on HTTP/1.1");
-        res.end();
+        var request = url.parse(req.url, true);
+        if(request.pathname.startsWith('/images')) {
+            const fileName = __dirname + '/../static' + request.pathname;
+            res.writeHead(200, {'Content-Type': mime.getType(fileName) });
+            var img = fs.readFileSync(fileName);
+            res.end(img, 'binary');
+        } else {
+            res.end("Running on HTTP/1.1");
+        }
     });
     server.listen(5000);
     

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP1.1 vs HTTP2</title>
+</head>
+
+<style>
+    .heading {
+        font-size: 24px;
+        text-align: center;
+    }
+    .img-container {
+        font-size: 0;
+        float: left;
+        border:1px solid black;
+    }
+    img {
+        height: 40px;
+        width: 40px;
+    }
+</style>
+
+<body>
+    <!-- HTTP 1.1 -->
+    <div class="img-container">
+        <h1 class="heading">HTTP1.1</h1>
+        <br/>
+        <img src="https://localhost:5000/images/culc_01_01.png"/>
+        <img src="https://localhost:5000/images/culc_01_02.png"/>
+        <img src="https://localhost:5000/images/culc_01_03.png"/>
+        <img src="https://localhost:5000/images/culc_01_04.png"/>
+        <img src="https://localhost:5000/images/culc_01_05.png"/>
+        <img src="https://localhost:5000/images/culc_01_06.png"/>
+        <img src="https://localhost:5000/images/culc_01_07.png"/>
+        <img src="https://localhost:5000/images/culc_01_08.png"/>
+        <img src="https://localhost:5000/images/culc_01_09.png"/>
+        <img src="https://localhost:5000/images/culc_01_10.png"/>
+        <br/>
+        <img src="https://localhost:5000/images/culc_02_01.png"/>
+        <img src="https://localhost:5000/images/culc_02_02.png"/>
+        <img src="https://localhost:5000/images/culc_02_03.png"/>
+        <img src="https://localhost:5000/images/culc_02_04.png"/>
+        <img src="https://localhost:5000/images/culc_02_05.png"/>
+        <img src="https://localhost:5000/images/culc_02_06.png"/>
+        <img src="https://localhost:5000/images/culc_02_07.png"/>
+        <img src="https://localhost:5000/images/culc_02_08.png"/>
+        <img src="https://localhost:5000/images/culc_02_09.png"/>
+        <img src="https://localhost:5000/images/culc_02_10.png"/>
+        <br/>
+        <img src="https://localhost:5000/images/culc_03_01.png"/>
+        <img src="https://localhost:5000/images/culc_03_02.png"/>
+        <img src="https://localhost:5000/images/culc_03_03.png"/>
+        <img src="https://localhost:5000/images/culc_03_04.png"/>
+        <img src="https://localhost:5000/images/culc_03_05.png"/>
+        <img src="https://localhost:5000/images/culc_03_06.png"/>
+        <img src="https://localhost:5000/images/culc_03_07.png"/>
+        <img src="https://localhost:5000/images/culc_03_08.png"/>
+        <img src="https://localhost:5000/images/culc_03_09.png"/>
+        <img src="https://localhost:5000/images/culc_03_10.png"/>
+        <br/>
+        <img src="https://localhost:5000/images/culc_04_01.png"/>
+        <img src="https://localhost:5000/images/culc_04_02.png"/>
+        <img src="https://localhost:5000/images/culc_04_03.png"/>
+        <img src="https://localhost:5000/images/culc_04_04.png"/>
+        <img src="https://localhost:5000/images/culc_04_05.png"/>
+        <img src="https://localhost:5000/images/culc_04_06.png"/>
+        <img src="https://localhost:5000/images/culc_04_07.png"/>
+        <img src="https://localhost:5000/images/culc_04_08.png"/>
+        <img src="https://localhost:5000/images/culc_04_09.png"/>
+        <img src="https://localhost:5000/images/culc_04_10.png"/>
+        <br/>
+        <img src="https://localhost:5000/images/culc_05_01.png"/>
+        <img src="https://localhost:5000/images/culc_05_02.png"/>
+        <img src="https://localhost:5000/images/culc_05_03.png"/>
+        <img src="https://localhost:5000/images/culc_05_04.png"/>
+        <img src="https://localhost:5000/images/culc_05_05.png"/>
+        <img src="https://localhost:5000/images/culc_05_06.png"/>
+        <img src="https://localhost:5000/images/culc_05_07.png"/>
+        <img src="https://localhost:5000/images/culc_05_08.png"/>
+        <img src="https://localhost:5000/images/culc_05_09.png"/>
+        <img src="https://localhost:5000/images/culc_05_10.png"/>
+        <br/>
+        <img src="https://localhost:5000/images/culc_06_01.png"/>
+        <img src="https://localhost:5000/images/culc_06_02.png"/>
+        <img src="https://localhost:5000/images/culc_06_03.png"/>
+        <img src="https://localhost:5000/images/culc_06_04.png"/>
+        <img src="https://localhost:5000/images/culc_06_05.png"/>
+        <img src="https://localhost:5000/images/culc_06_06.png"/>
+        <img src="https://localhost:5000/images/culc_06_07.png"/>
+        <img src="https://localhost:5000/images/culc_06_08.png"/>
+        <img src="https://localhost:5000/images/culc_06_09.png"/>
+        <img src="https://localhost:5000/images/culc_06_10.png"/>
+        <br/>
+        <img src="https://localhost:5000/images/culc_07_01.png"/>
+        <img src="https://localhost:5000/images/culc_07_02.png"/>
+        <img src="https://localhost:5000/images/culc_07_03.png"/>
+        <img src="https://localhost:5000/images/culc_07_04.png"/>
+        <img src="https://localhost:5000/images/culc_07_05.png"/>
+        <img src="https://localhost:5000/images/culc_07_06.png"/>
+        <img src="https://localhost:5000/images/culc_07_07.png"/>
+        <img src="https://localhost:5000/images/culc_07_08.png"/>
+        <img src="https://localhost:5000/images/culc_07_09.png"/>
+        <img src="https://localhost:5000/images/culc_07_10.png"/>
+        <br/>
+        <img src="https://localhost:5000/images/culc_08_01.png"/>
+        <img src="https://localhost:5000/images/culc_08_02.png"/>
+        <img src="https://localhost:5000/images/culc_08_03.png"/>
+        <img src="https://localhost:5000/images/culc_08_04.png"/>
+        <img src="https://localhost:5000/images/culc_08_05.png"/>
+        <img src="https://localhost:5000/images/culc_08_06.png"/>
+        <img src="https://localhost:5000/images/culc_08_07.png"/>
+        <img src="https://localhost:5000/images/culc_08_08.png"/>
+        <img src="https://localhost:5000/images/culc_08_09.png"/>
+        <img src="https://localhost:5000/images/culc_08_10.png"/>
+        <br/>
+        <img src="https://localhost:5000/images/culc_09_01.png"/>
+        <img src="https://localhost:5000/images/culc_09_02.png"/>
+        <img src="https://localhost:5000/images/culc_09_03.png"/>
+        <img src="https://localhost:5000/images/culc_09_04.png"/>
+        <img src="https://localhost:5000/images/culc_09_05.png"/>
+        <img src="https://localhost:5000/images/culc_09_06.png"/>
+        <img src="https://localhost:5000/images/culc_09_07.png"/>
+        <img src="https://localhost:5000/images/culc_09_08.png"/>
+        <img src="https://localhost:5000/images/culc_09_09.png"/>
+        <img src="https://localhost:5000/images/culc_09_10.png"/>
+        <br/>
+        <img src="https://localhost:5000/images/culc_10_01.png"/>
+        <img src="https://localhost:5000/images/culc_10_02.png"/>
+        <img src="https://localhost:5000/images/culc_10_03.png"/>
+        <img src="https://localhost:5000/images/culc_10_04.png"/>
+        <img src="https://localhost:5000/images/culc_10_05.png"/>
+        <img src="https://localhost:5000/images/culc_10_06.png"/>
+        <img src="https://localhost:5000/images/culc_10_07.png"/>
+        <img src="https://localhost:5000/images/culc_10_08.png"/>
+        <img src="https://localhost:5000/images/culc_10_09.png"/>
+        <img src="https://localhost:5000/images/culc_10_10.png"/>
+    </div>
+    <!-- HTTP2 -->
+    <div class="img-container">
+        <h1 class="heading">HTTP2</h1>
+        <br/>
+        <img src="https://localhost:5001/images/culc_01_01.png"/>
+        <img src="https://localhost:5001/images/culc_01_02.png"/>
+        <img src="https://localhost:5001/images/culc_01_03.png"/>
+        <img src="https://localhost:5001/images/culc_01_04.png"/>
+        <img src="https://localhost:5001/images/culc_01_05.png"/>
+        <img src="https://localhost:5001/images/culc_01_06.png"/>
+        <img src="https://localhost:5001/images/culc_01_07.png"/>
+        <img src="https://localhost:5001/images/culc_01_08.png"/>
+        <img src="https://localhost:5001/images/culc_01_09.png"/>
+        <img src="https://localhost:5001/images/culc_01_10.png"/>
+        <br/>
+        <img src="https://localhost:5001/images/culc_02_01.png"/>
+        <img src="https://localhost:5001/images/culc_02_02.png"/>
+        <img src="https://localhost:5001/images/culc_02_03.png"/>
+        <img src="https://localhost:5001/images/culc_02_04.png"/>
+        <img src="https://localhost:5001/images/culc_02_05.png"/>
+        <img src="https://localhost:5001/images/culc_02_06.png"/>
+        <img src="https://localhost:5001/images/culc_02_07.png"/>
+        <img src="https://localhost:5001/images/culc_02_08.png"/>
+        <img src="https://localhost:5001/images/culc_02_09.png"/>
+        <img src="https://localhost:5001/images/culc_02_10.png"/>
+        <br/>
+        <img src="https://localhost:5001/images/culc_03_01.png"/>
+        <img src="https://localhost:5001/images/culc_03_02.png"/>
+        <img src="https://localhost:5001/images/culc_03_03.png"/>
+        <img src="https://localhost:5001/images/culc_03_04.png"/>
+        <img src="https://localhost:5001/images/culc_03_05.png"/>
+        <img src="https://localhost:5001/images/culc_03_06.png"/>
+        <img src="https://localhost:5001/images/culc_03_07.png"/>
+        <img src="https://localhost:5001/images/culc_03_08.png"/>
+        <img src="https://localhost:5001/images/culc_03_09.png"/>
+        <img src="https://localhost:5001/images/culc_03_10.png"/>
+        <br/>
+        <img src="https://localhost:5001/images/culc_04_01.png"/>
+        <img src="https://localhost:5001/images/culc_04_02.png"/>
+        <img src="https://localhost:5001/images/culc_04_03.png"/>
+        <img src="https://localhost:5001/images/culc_04_04.png"/>
+        <img src="https://localhost:5001/images/culc_04_05.png"/>
+        <img src="https://localhost:5001/images/culc_04_06.png"/>
+        <img src="https://localhost:5001/images/culc_04_07.png"/>
+        <img src="https://localhost:5001/images/culc_04_08.png"/>
+        <img src="https://localhost:5001/images/culc_04_09.png"/>
+        <img src="https://localhost:5001/images/culc_04_10.png"/>
+        <br/>
+        <img src="https://localhost:5001/images/culc_05_01.png"/>
+        <img src="https://localhost:5001/images/culc_05_02.png"/>
+        <img src="https://localhost:5001/images/culc_05_03.png"/>
+        <img src="https://localhost:5001/images/culc_05_04.png"/>
+        <img src="https://localhost:5001/images/culc_05_05.png"/>
+        <img src="https://localhost:5001/images/culc_05_06.png"/>
+        <img src="https://localhost:5001/images/culc_05_07.png"/>
+        <img src="https://localhost:5001/images/culc_05_08.png"/>
+        <img src="https://localhost:5001/images/culc_05_09.png"/>
+        <img src="https://localhost:5001/images/culc_05_10.png"/>
+        <br/>
+        <img src="https://localhost:5001/images/culc_06_01.png"/>
+        <img src="https://localhost:5001/images/culc_06_02.png"/>
+        <img src="https://localhost:5001/images/culc_06_03.png"/>
+        <img src="https://localhost:5001/images/culc_06_04.png"/>
+        <img src="https://localhost:5001/images/culc_06_05.png"/>
+        <img src="https://localhost:5001/images/culc_06_06.png"/>
+        <img src="https://localhost:5001/images/culc_06_07.png"/>
+        <img src="https://localhost:5001/images/culc_06_08.png"/>
+        <img src="https://localhost:5001/images/culc_06_09.png"/>
+        <img src="https://localhost:5001/images/culc_06_10.png"/>
+        <br/>
+        <img src="https://localhost:5001/images/culc_07_01.png"/>
+        <img src="https://localhost:5001/images/culc_07_02.png"/>
+        <img src="https://localhost:5001/images/culc_07_03.png"/>
+        <img src="https://localhost:5001/images/culc_07_04.png"/>
+        <img src="https://localhost:5001/images/culc_07_05.png"/>
+        <img src="https://localhost:5001/images/culc_07_06.png"/>
+        <img src="https://localhost:5001/images/culc_07_07.png"/>
+        <img src="https://localhost:5001/images/culc_07_08.png"/>
+        <img src="https://localhost:5001/images/culc_07_09.png"/>
+        <img src="https://localhost:5001/images/culc_07_10.png"/>
+        <br/>
+        <img src="https://localhost:5001/images/culc_08_01.png"/>
+        <img src="https://localhost:5001/images/culc_08_02.png"/>
+        <img src="https://localhost:5001/images/culc_08_03.png"/>
+        <img src="https://localhost:5001/images/culc_08_04.png"/>
+        <img src="https://localhost:5001/images/culc_08_05.png"/>
+        <img src="https://localhost:5001/images/culc_08_06.png"/>
+        <img src="https://localhost:5001/images/culc_08_07.png"/>
+        <img src="https://localhost:5001/images/culc_08_08.png"/>
+        <img src="https://localhost:5001/images/culc_08_09.png"/>
+        <img src="https://localhost:5001/images/culc_08_10.png"/>
+        <br/>
+        <img src="https://localhost:5001/images/culc_09_01.png"/>
+        <img src="https://localhost:5001/images/culc_09_02.png"/>
+        <img src="https://localhost:5001/images/culc_09_03.png"/>
+        <img src="https://localhost:5001/images/culc_09_04.png"/>
+        <img src="https://localhost:5001/images/culc_09_05.png"/>
+        <img src="https://localhost:5001/images/culc_09_06.png"/>
+        <img src="https://localhost:5001/images/culc_09_07.png"/>
+        <img src="https://localhost:5001/images/culc_09_08.png"/>
+        <img src="https://localhost:5001/images/culc_09_09.png"/>
+        <img src="https://localhost:5001/images/culc_09_10.png"/>
+        <br/>
+        <img src="https://localhost:5001/images/culc_10_01.png"/>
+        <img src="https://localhost:5001/images/culc_10_02.png"/>
+        <img src="https://localhost:5001/images/culc_10_03.png"/>
+        <img src="https://localhost:5001/images/culc_10_04.png"/>
+        <img src="https://localhost:5001/images/culc_10_05.png"/>
+        <img src="https://localhost:5001/images/culc_10_06.png"/>
+        <img src="https://localhost:5001/images/culc_10_07.png"/>
+        <img src="https://localhost:5001/images/culc_10_08.png"/>
+        <img src="https://localhost:5001/images/culc_10_09.png"/>
+        <img src="https://localhost:5001/images/culc_10_10.png"/>
+    </div>
+    
+</body>
+
+</html>
