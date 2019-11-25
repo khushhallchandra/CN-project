@@ -26,24 +26,27 @@ function measureTimeForSizesTLS(proto_type) {
 }
 
 //1,5,25,50,100,1000
-var num_objects = [1,5,25,50,100,1000];
-var string_objects = ["1","5","25","50","100","1000"]
+var num_objects = [1,5,25,50,100,500];
+var string_objects = ["1","5","25","50","100","500"]
 //BENCHMARK NUMBER
 function measureTimeForNumbers(proto_type) {
-    let i = 8000;
+    let i = 7000;
     var data = dataChunks["txt3"]
-    for(var k = 0; k < num_objects.length; k++) {
+    let k = 0;
         for(var j=0; j<50; j++) {
             proto_type.measureTime("num_" + string_objects[k] + "_txt3", data, num_objects[k], i++);
-        }
-    }   
+        }  
 }
 
 
 // Call scripts
 // measureTimeForSizes(quic);
+// measureTimeForSizes(http1);
+// measureTimeForSizes(http2);
+
+// measureTimeForSizesTLS(quic);
 // measureTimeForSizesTLS(http1);
 // measureTimeForSizesTLS(http2);
-// thunk.delay(100000);
+
+// measureTimeForNumbers(http1);
 measureTimeForNumbers(http2);
-// measureTimeForSizes();

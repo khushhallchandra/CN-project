@@ -22,23 +22,17 @@ function measureTime(key, data, num_objects=1, port=2000,  tls=false) {
         firstByteAt: undefined,
         endAt: undefined
     }
-
+    let server;
     if(tls) {
-        const server = https.createServer(options, (req, res) => {
-            for(var num=0; num < num_objects; num++){
-                res.write(data);
-            }
+        server = https.createServer(options, (req, res) => {
+            res.write(data);
             res.end();
-            server.close();
         });
         server.listen(port);
     } else {
-        const server = http.createServer((req, res) => {
-            for(var num=0; num < num_objects; num++){
-                res.write(data);
-            }
+        server = http.createServer((req, res) => {
+            res.write(data);
             res.end();
-            server.close();
         });
         server.listen(port); 
     }
@@ -56,27 +50,41 @@ function measureTime(key, data, num_objects=1, port=2000,  tls=false) {
     };
 
     let httpType = tls ? https : http;
+    let flag = true;
+    let responseBody = '';
 
-    const req = httpType.request(clientOptions, res => {
-        res.once('readable', d => {
-            eventTimes.firstByteAt = process.hrtime()
-        });
+    request();
 
-        let responseBody = '';
-        res.on('data', (chunk) => { responseBody += chunk });
-        
-        res.on('end', () => {
-            eventTimes.endAt = process.hrtime()
-            let timings = utils.getTimings(eventTimes);
-            utils.writeToFile("benchmark_size", "http1", key, timings);
-        });
-    });
-      
-    req.on('error', error => {
-        console.error(error);
-    })
+    setTimeout(() => {
+        let timings = utils.getTimings(eventTimes);
+        utils.writeToFile("benchmark_size", "http1", key, timings);
+    }, 20000);
     
-    req.end()
+    function request() {
+        const req = httpType.request(clientOptions, res => {
+            res.once('readable', d => {
+                if(flag) {
+                    eventTimes.firstByteAt = process.hrtime();
+                    flag = false;
+                }
+            });
+    
+            res.on('data', (chunk) => { responseBody += chunk });
+            
+            res.on('end', () => {
+                if(num_objects > 0) {
+                    eventTimes.endAt = process.hrtime()
+                    num_objects--;
+                    request();
+                } else {
+                    server.close();
+                }
+            });
+        });
+        req.end()
+    }
+    
+    
 
     // const client = tls ? http.connect(`https://localhost:${port}`) : http.connect(`http://localhost:${port}`);
     
