@@ -4,7 +4,7 @@ const https = require('https');
 const fs = require('fs');
 const utils = require('../utils.js')
 
-function measureTime(key, data, port=2000, tls=false) {
+function measureTime(key, data, num_objects=1, port=2000,  tls=false) {
 
     // ----------------------------
     // ---------- Server ----------
@@ -25,14 +25,18 @@ function measureTime(key, data, port=2000, tls=false) {
 
     if(tls) {
         const server = https.createServer(options, (req, res) => {
-            res.write(data);
+            for(var num=0; num < num_objects; num++){
+                res.write(data);
+            }
             res.end();
             server.close();
         });
         server.listen(port);
     } else {
         const server = http.createServer((req, res) => {
-            res.write(data);
+            for(var num=0; num < num_objects; num++){
+                res.write(data);
+            }
             res.end();
             server.close();
         });

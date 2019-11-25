@@ -3,7 +3,7 @@ const http2 = require('http2');
 const fs = require('fs');
 const utils = require('../utils.js')
 
-function measureTime(key, data, port=2000, tls=false) {
+function measureTime(key, data, num_objects=1, port=2000, tls=false) {
 
     // ----------------------------
     // ---------- Server ----------
@@ -28,7 +28,9 @@ function measureTime(key, data, port=2000, tls=false) {
     });
     server.on('stream', (stream, requestHeaders) => {
         stream.respond({ ':status': 200, 'content-type': 'text/plain' });
-        stream.write(data);
+        for(var num=0; num < num_objects; num++){
+            stream.write(data);
+        }
         stream.end();
         server.close();
     });
